@@ -24,7 +24,6 @@ import {
   Stepper,
   Step,
   StepLabel,
-  Chip,
   InputAdornment,
   IconButton,
 } from '@mui/material';
@@ -39,7 +38,6 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material';
-import { Form } from 'react-bootstrap';
 
 const schema = yup.object({
   firstName: yup.string().required('First name is required').min(2, 'Must be at least 2 characters'),
@@ -66,8 +64,8 @@ const schema = yup.object({
     .string()
     .required('Please confirm your password')
     .oneOf([yup.ref('password')], 'Passwords must match'),
-  terms: yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
-}).required();
+  terms: yup.boolean().oneOf([true], 'You must accept the terms and conditions').required('You must accept the terms and conditions'),
+});
 
 type FormData = yup.InferType<typeof schema>;
 
@@ -85,7 +83,7 @@ export default function RegistrationForm() {
     formState: { errors },
     trigger,
   } = useForm<FormData>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema) as any,
     mode: 'onChange',
     defaultValues: {
       accountType: 'business',
@@ -161,7 +159,7 @@ export default function RegistrationForm() {
                     Personal Information
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <Controller
                         name="firstName"
                         control={control}
@@ -183,7 +181,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <Controller
                         name="lastName"
                         control={control}
@@ -205,7 +203,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="email"
                         control={control}
@@ -228,7 +226,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="phone"
                         control={control}
@@ -262,7 +260,7 @@ export default function RegistrationForm() {
                     Company Details
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <Controller
                         name="company"
                         control={control}
@@ -284,7 +282,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <Controller
                         name="jobTitle"
                         control={control}
@@ -299,7 +297,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="address"
                         control={control}
@@ -321,7 +319,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <Controller
                         name="country"
                         control={control}
@@ -345,7 +343,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid size={{ xs: 12, sm: 3 }}>
                       <Controller
                         name="city"
                         control={control}
@@ -360,7 +358,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid size={{ xs: 12, sm: 3 }}>
                       <Controller
                         name="zipCode"
                         control={control}
@@ -386,7 +384,7 @@ export default function RegistrationForm() {
                     Account Setup
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <FormControl component="fieldset">
                         <FormLabel component="legend" sx={{ mb: 2, fontWeight: 600 }}>
                           Account Type
@@ -446,7 +444,7 @@ export default function RegistrationForm() {
                         />
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="password"
                         control={control}
@@ -474,7 +472,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="confirmPassword"
                         control={control}
@@ -502,7 +500,7 @@ export default function RegistrationForm() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Controller
                         name="terms"
                         control={control}
@@ -560,7 +558,7 @@ export default function RegistrationForm() {
 
         {/* Features */}
         <Grid container spacing={3} sx={{ mt: 4 }}>
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ textAlign: 'center' }}>
               <Box
                 sx={{
@@ -584,7 +582,7 @@ export default function RegistrationForm() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ textAlign: 'center' }}>
               <Box
                 sx={{
@@ -608,7 +606,7 @@ export default function RegistrationForm() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ textAlign: 'center' }}>
               <Box
                 sx={{
@@ -637,3 +635,6 @@ export default function RegistrationForm() {
     </Box>
   );
 }
+
+
+

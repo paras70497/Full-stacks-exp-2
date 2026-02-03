@@ -24,8 +24,6 @@ import {
 } from '@mui/icons-material';
 import { Row, Col } from 'react-bootstrap';
 import {
-  LineChart,
-  Line,
   AreaChart,
   Area,
   BarChart,
@@ -35,7 +33,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from 'recharts';
 
 const salesData = [
@@ -125,7 +122,7 @@ export default function Dashboard() {
 
         {/* Stats Grid */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} lg={3}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <StatCard
               title="Total Revenue"
               value="$35.2k"
@@ -135,7 +132,7 @@ export default function Dashboard() {
               color="#0a7ea4"
             />
           </Grid>
-          <Grid item xs={12} sm={6} lg={3}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <StatCard
               title="Total Orders"
               value="1,136"
@@ -145,7 +142,7 @@ export default function Dashboard() {
               color="#ff6b9d"
             />
           </Grid>
-          <Grid item xs={12} sm={6} lg={3}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <StatCard
               title="New Customers"
               value="758"
@@ -155,7 +152,7 @@ export default function Dashboard() {
               color="#10b981"
             />
           </Grid>
-          <Grid item xs={12} sm={6} lg={3}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
             <StatCard
               title="Avg Rating"
               value="4.8"
@@ -170,7 +167,7 @@ export default function Dashboard() {
         {/* Charts Row */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
           {/* Revenue Chart */}
-          <Grid item xs={12} lg={8}>
+          <Grid size={{ xs: 12, lg: 8 }}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
@@ -229,7 +226,7 @@ export default function Dashboard() {
           </Grid>
 
           {/* Orders Chart */}
-          <Grid item xs={12} lg={4}>
+          <Grid size={{ xs: 12, lg: 4 }}>
             <Card sx={{ height: '100%' }}>
               <CardContent>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -391,3 +388,5 @@ export default function Dashboard() {
     </Box>
   );
 }
+
+
